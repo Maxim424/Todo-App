@@ -19,6 +19,7 @@
 		4F2401372C24D498008E5935 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401362C24D498008E5935 /* Logger.swift */; };
 		4F2401392C24D7EC008E5935 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401382C24D7EC008E5935 /* FileCache.swift */; };
 		4F2401402C25CD1C008E5935 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */; };
+		4F2401432C25D5DD008E5935 /* TodoItem+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		4F2401362C24D498008E5935 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4F2401382C24D7EC008E5935 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
+		4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+CSV.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				4F2401322C24C7A1008E5935 /* TodoItem.swift */,
 				4F2401342C24C92B008E5935 /* TodoItem+JSON.swift */,
+				4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2401432C25D5DD008E5935 /* TodoItem+CSV.swift in Sources */,
 				4F2401372C24D498008E5935 /* Logger.swift in Sources */,
 				4F2401352C24C92B008E5935 /* TodoItem+JSON.swift in Sources */,
 				4F24010A2C24C668008E5935 /* ContentView.swift in Sources */,
