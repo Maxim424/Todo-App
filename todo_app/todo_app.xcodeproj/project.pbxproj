@@ -104,11 +104,11 @@
 		4F2401062C24C668008E5935 /* todo_app */ = {
 			isa = PBXGroup;
 			children = (
+				4F2401072C24C668008E5935 /* todo_appApp.swift */,
+				4F2401092C24C668008E5935 /* ContentView.swift */,
 				4F2401362C24D498008E5935 /* Logger.swift */,
 				4F2401382C24D7EC008E5935 /* FileCache.swift */,
 				4F2401312C24C792008E5935 /* Models */,
-				4F2401072C24C668008E5935 /* todo_appApp.swift */,
-				4F2401092C24C668008E5935 /* ContentView.swift */,
 				4F24010B2C24C669008E5935 /* Assets.xcassets */,
 				4F24010D2C24C669008E5935 /* Preview Content */,
 			);
