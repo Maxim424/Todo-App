@@ -46,7 +46,7 @@ final class TodoItemTests: XCTestCase {
         
         fileCache.addTodoItem(item3)
         XCTAssertEqual(fileCache.items.count, 3)
-        XCTAssertEqual(fileCache.items[2].modificationDate, nil)
+        XCTAssertNil(fileCache.items[2].modificationDate)
     }
 
     func testRemoveTodoItem() {
@@ -99,5 +99,36 @@ final class TodoItemTests: XCTestCase {
         XCTAssertEqual(fileCache.items.count, 2)
         XCTAssertTrue(fileCache.items.contains(where: { $0.text == "Item1 text" }))
         XCTAssertTrue(fileCache.items.contains(where: { $0.isDone }))
+    }
+    
+    func testParseCSV() {
+        let csvString = "1,\"Item1 text\",normal,true,2024-06-21T00:00:00Z,2024-06-22T00:00:00Z"
+        guard let item = TodoItem.parse(csv: csvString) else {
+            XCTFail("Failed to parse CSV")
+            return
+        }
+        
+        XCTAssertEqual(item.id, "1")
+        XCTAssertEqual(item.text, "Item1 text")
+        XCTAssertEqual(item.importance, .normal)
+        XCTAssertTrue(item.isDone)
+        XCTAssertEqual(item.creationDate, ISO8601DateFormatter().date(from: "2024-06-21T00:00:00Z"))
+        XCTAssertEqual(item.deadline, ISO8601DateFormatter().date(from: "2024-06-22T00:00:00Z"))
+        XCTAssertNil(item.modificationDate)
+    }
+    
+    func testCreateCSV() {
+        let creationDate = ISO8601DateFormatter().date(from: "2024-06-21T00:00:00Z")!
+        let deadline = ISO8601DateFormatter().date(from: "2024-06-22T00:00:00Z")!
+        let item = TodoItem(
+            id: "1",
+            text: "Item1 text",
+            importance: .important,
+            deadline: deadline,
+            isDone: true,
+            creationDate: creationDate,
+            modificationDate: nil
+        )
+        XCTAssertEqual(item.csv, "1,\"Item1 text\",important,true,2024-06-21T00:00:00Z,2024-06-22T00:00:00Z")
     }
 }
