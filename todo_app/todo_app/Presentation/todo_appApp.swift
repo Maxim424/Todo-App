@@ -11,7 +11,8 @@ import SwiftUI
 struct todo_appApp: App {
     var body: some Scene {
         WindowGroup {
-            TodoListView()
+            CalendarViewRepresentable()
+                .ignoresSafeArea(.all)
         }
         .modelContainer(for: TodoItemModel.self)
     }

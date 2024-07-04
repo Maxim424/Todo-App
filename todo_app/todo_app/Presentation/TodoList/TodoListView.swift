@@ -13,6 +13,7 @@ struct TodoListView: View {
     @Environment(\.modelContext) private var context
     @State private var isShowingDetails = false
     @State private var isShowingAllItems = false
+    @State private var isShowingCalendar = false
     @State private var currentModel: TodoItemModel? = nil
     @Query(filter: #Predicate<TodoItemModel> { !$0.isDone }, sort: [SortDescriptor(\TodoItemModel.modificationDate, order: .reverse)], animation: .snappy) private var activeList: [TodoItemModel]
     @Query(sort: [SortDescriptor(\TodoItemModel.modificationDate, order: .reverse)], animation: .snappy) private var fullList: [TodoItemModel]
@@ -71,7 +72,17 @@ struct TodoListView: View {
                     DetailsView(model: currentModel)
                 }
             }
+            .navigationDestination(isPresented: $isShowingCalendar) {
+                CalendarViewRepresentable()
+            }
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isShowingCalendar.toggle()
+                    } label: {
+                        Image(systemName: "calendar")
+                    }
+                }
                 ToolbarItem(placement: .bottomBar) {
                     CommonAddButton {
                         let todoItem = TodoItemModel(text: "", importance: .normal)
