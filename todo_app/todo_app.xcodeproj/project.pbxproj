@@ -25,6 +25,7 @@
 		4F36DF872C34929B00339684 /* UIView+pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF862C34929B00339684 /* UIView+pin.swift */; };
 		4F36DF892C34983300339684 /* CalendarViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF882C34983300339684 /* CalendarViewRepresentable.swift */; };
 		4F36DF8B2C349CBF00339684 /* Date+getString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF8A2C349CBF00339684 /* Date+getString.swift */; };
+		4FBB48282C373DF000E29CC5 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */; };
 		4FD483322C2EE8C500DED81A /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483312C2EE8C500DED81A /* TodoListView.swift */; };
 		4FD483362C2EEA0800DED81A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4FD483352C2EEA0800DED81A /* Localizable.xcstrings */; };
 		4FD483392C2EF21700DED81A /* CommonAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483382C2EF21700DED81A /* CommonAddButton.swift */; };
@@ -75,6 +76,7 @@
 		4F36DF862C34929B00339684 /* UIView+pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+pin.swift"; sourceTree = "<group>"; };
 		4F36DF882C34983300339684 /* CalendarViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewRepresentable.swift; sourceTree = "<group>"; };
 		4F36DF8A2C349CBF00339684 /* Date+getString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+getString.swift"; sourceTree = "<group>"; };
+		4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		4FD483312C2EE8C500DED81A /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		4FD483352C2EEA0800DED81A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4FD483382C2EF21700DED81A /* CommonAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAddButton.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				4FD4833A2C2EF6F500DED81A /* TodoRow */,
 				4FD483312C2EE8C500DED81A /* TodoListView.swift */,
 				4FD483382C2EF21700DED81A /* CommonAddButton.swift */,
+				4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB48282C373DF000E29CC5 /* TodoListViewModel.swift in Sources */,
 				4F36DF842C34918200339684 /* CalendarViewController.swift in Sources */,
 				4FD4834A2C2F796600DED81A /* TodoItemModel.swift in Sources */,
 				4F2401432C25D5DD008E5935 /* TodoItem+CSV.swift in Sources */,

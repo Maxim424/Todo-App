@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DetailsView: View {
     @Environment(\.modelContext) private var context
-    @Bindable var model: TodoItemModel
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var viewModel: TodoListViewModel
     @State var text: String = ""
     @State var importance: Importance = .normal
     @State var isDeadlineSet: Bool = false
@@ -28,7 +28,6 @@ struct DetailsView: View {
                 }
                 Section {
                     Button(action: {
-                        context.delete(model)
                         dismiss()
                     }, label: {
                         HStack {
@@ -52,13 +51,13 @@ struct DetailsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        model.modificationDate = .now
-                        model.text = text
-                        model.importance = importance
+                        viewModel.currentItem?.modificationDate = .now
+                        viewModel.currentItem?.text = text
+                        viewModel.currentItem?.importance = importance
                         if isDeadlineSet {
-                            model.deadline = deadline
+                            viewModel.currentItem?.deadline = deadline
                         } else {
-                            model.deadline = nil
+                            viewModel.currentItem?.deadline = nil
                         }
                         dismiss()
                     } label: {
@@ -68,9 +67,9 @@ struct DetailsView: View {
                 }
             }
             .onAppear {
-                text = model.text
-                importance = model.importance
-                if let deadline = model.deadline {
+                text = viewModel.currentItem?.text ?? ""
+                importance = viewModel.currentItem?.importance ?? .normal
+                if let deadline = viewModel.currentItem?.deadline {
                     isDeadlineSet = true
                     self.deadline = deadline
                 }

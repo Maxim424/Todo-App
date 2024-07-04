@@ -28,6 +28,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         
         borderView.layer.cornerRadius = 10
         borderView.layer.borderWidth = 2
+        borderView.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -36,10 +37,8 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     func setSelected(_ selected: Bool) {
         if selected {
-            borderView.backgroundColor = UIColor(red: 215, green: 215, blue: 202)
             borderView.layer.borderColor = UIColor(red: 160, green: 160, blue: 160).cgColor
         } else {
-            borderView.backgroundColor = .clear
             borderView.layer.borderColor = UIColor.clear.cgColor
         }
     }

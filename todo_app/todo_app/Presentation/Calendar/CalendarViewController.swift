@@ -8,46 +8,11 @@
 import UIKit
 
 final class CalendarViewController: UIViewController {
+    private  let fileCache = FileCache()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var collectionView: UICollectionView!
     private var selectedDateIndex = 0
-    private let tableViewData: [TodoItem] = [
-        .init(
-            text: "todo1!",
-            importance: .normal,
-            modificationDate: ISO8601DateFormatter().date(from: "2024-06-21T00:00:00Z")
-        ),
-        .init(
-            text: "todo2! dsfgnbhgfr",
-            importance: .normal,
-            modificationDate: ISO8601DateFormatter().date(from: "2024-06-22T00:00:00Z")
-        ),
-        .init(
-            text: "dfgb todo3!",
-            importance: .normal,
-            modificationDate: ISO8601DateFormatter().date(from: "2024-06-22T00:00:00Z")
-        ),
-        .init(
-            text: "todfdvao4!",
-            importance: .important,
-            modificationDate: ISO8601DateFormatter().date(from: "2024-06-23T00:00:00Z")
-        ),
-        .init(
-            text: "todo5!",
-            importance: .notImportant,
-            modificationDate: ISO8601DateFormatter().date(from: "2024-06-24T00:00:00Z")
-        ),
-        .init(text: "todo6", importance: .normal),
-        .init(text: "todo7!", importance: .important),
-        .init(text: "todo8!", importance: .normal),
-        .init(text: "todo9!", importance: .normal),
-        .init(text: "todo10!", importance: .normal),
-        .init(text: "todo11!", importance: .normal),
-        .init(text: "todo12!", importance: .normal),
-        .init(text: "todo13!", importance: .normal),
-        .init(text: "todo14!", importance: .normal),
-        .init(text: "todo15", importance: .normal),
-    ]
+    private var tableViewData: [TodoItem] = []
     private var collectionViewData: [String] = []
     private var filteredData: [[TodoItem]] = []
     
@@ -58,6 +23,7 @@ final class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableViewData = fetchData()
         filteredData = processTodoItems(tableViewData)
         collectionViewData = processDates(filteredData)
         tableView.reloadData()
@@ -75,7 +41,6 @@ final class CalendarViewController: UIViewController {
         layout.minimumInteritemSpacing = 5
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor(red: 247, green: 246, blue: 242)
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -102,9 +67,13 @@ final class CalendarViewController: UIViewController {
         tableView.pinTop(to: collectionView.bottomAnchor)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor(red: 247, green: 246, blue: 242)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+    }
+    
+    private func fetchData() -> [TodoItem] {
+        fileCache.loadFromFile(filename: FileCache.filename)
+        return fileCache.items
     }
     
     private func processTodoItems(_ items: [TodoItem]) -> [[TodoItem]] {

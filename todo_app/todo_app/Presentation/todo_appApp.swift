@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct todo_appApp: App {
+    @StateObject private var todoListViewModel = TodoListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            CalendarViewRepresentable()
-                .ignoresSafeArea(.all)
+            TodoListView()
+                .environmentObject(todoListViewModel)
         }
         .modelContainer(for: TodoItemModel.self)
     }

@@ -8,11 +8,17 @@
 import Foundation
 import OSLog
 
-class FileCache {
+final class FileCache {
+    static var filename = "todo_list.json"
     private var todoItems: [TodoItem] = []
 
     var items: [TodoItem] {
-        return todoItems
+        get {
+            todoItems
+        }
+        set {
+            todoItems = newValue
+        }
     }
 
     func addTodoItem(_ item: TodoItem) {

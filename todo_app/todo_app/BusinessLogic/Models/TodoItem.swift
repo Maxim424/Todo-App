@@ -15,12 +15,12 @@ enum Importance: String, Codable, CaseIterable {
 
 struct TodoItem: Identifiable {
     let id: String
-    let text: String
-    let importance: Importance
-    let deadline: Date?
-    let isDone: Bool
-    let creationDate: Date
-    let modificationDate: Date?
+    var text: String
+    var importance: Importance
+    var deadline: Date?
+    var isDone: Bool
+    var creationDate: Date
+    var modificationDate: Date?
     
     init(
         id: String = UUID().uuidString,

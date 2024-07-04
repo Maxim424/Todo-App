@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct TodoRowView: View {
-    @Bindable var model: TodoItemModel
+    @Binding var model: TodoItem
     @FocusState private var isActive: Bool
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var phase
+    @EnvironmentObject private var viewModel: TodoListViewModel
     
     var body: some View {
         HStack(spacing: 12) {
@@ -37,13 +38,16 @@ struct TodoRowView: View {
         }
         .onSubmit(of: .text) {
             if model.text.isEmpty {
-                context.delete(model)
+                // TODO: add deletion functionality.
             }
         }
         .onChange(of: phase) { _, newValue in
             if newValue != .active && model.text.isEmpty {
-                context.delete(model)
+                // TODO: add deletion functionality.
             }
+        }
+        .onChange(of: isActive) { _, _ in
+            viewModel.eventUpdate(item: model)
         }
     }
     
