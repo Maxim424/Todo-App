@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct todo_appApp: App {
-    @StateObject private var todoListViewModel = TodoListViewModel()
+    @StateObject private var todoListViewModel = TodoListViewModel(fileCache: FileCache())
     
     var body: some Scene {
         WindowGroup {
             TodoListView()
                 .environmentObject(todoListViewModel)
         }
-        .modelContainer(for: TodoItemModel.self)
     }
 }

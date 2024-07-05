@@ -23,7 +23,7 @@ struct CommonDatePickerView: View {
                                 showDatePicker.toggle()
                             }
                         } label: {
-                            Text("\(selectedDate, formatter: dateFormatter)")
+                            Text("\(selectedDate.getString())")
                         }
                     }
                 }
@@ -52,12 +52,5 @@ struct CommonDatePickerView: View {
                     }
             }
         }
-    }
-
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMMM yyyy"
-        formatter.locale = Locale(identifier: "ru_RU")
-        return formatter
     }
 }

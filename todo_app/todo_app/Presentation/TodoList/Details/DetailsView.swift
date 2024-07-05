@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct DetailsView: View {
-    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var viewModel: TodoListViewModel
     @State var text: String = ""
     @State var importance: Importance = .normal
     @State var isDeadlineSet: Bool = false
-    @State var deadline: Date = .now
+    @State var deadline: Date = (Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date())
     
     var body: some View {
         NavigationStack {
@@ -28,6 +27,9 @@ struct DetailsView: View {
                 }
                 Section {
                     Button(action: {
+                        if let item = viewModel.currentItem {
+                            viewModel.eventDelete(item: item)
+                        }
                         dismiss()
                     }, label: {
                         HStack {
@@ -44,6 +46,9 @@ struct DetailsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
+                        if let item = viewModel.currentItem, item.text.isEmpty {
+                            viewModel.eventDelete(item: item)
+                        }
                         dismiss()
                     } label: {
                         Text("cancel")
@@ -51,13 +56,20 @@ struct DetailsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        viewModel.currentItem?.modificationDate = .now
-                        viewModel.currentItem?.text = text
-                        viewModel.currentItem?.importance = importance
-                        if isDeadlineSet {
-                            viewModel.currentItem?.deadline = deadline
+                        if let item = viewModel.currentItem, text.isEmpty {
+                            viewModel.eventDelete(item: item)
                         } else {
-                            viewModel.currentItem?.deadline = nil
+                            viewModel.currentItem?.modificationDate = .now
+                            viewModel.currentItem?.text = text
+                            viewModel.currentItem?.importance = importance
+                            if isDeadlineSet {
+                                viewModel.currentItem?.deadline = deadline
+                            } else {
+                                viewModel.currentItem?.deadline = nil
+                            }
+                            if let model = viewModel.currentItem {
+                                viewModel.eventUpdate(item: model)
+                            }
                         }
                         dismiss()
                     } label: {

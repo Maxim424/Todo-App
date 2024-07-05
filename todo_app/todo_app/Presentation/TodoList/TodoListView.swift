@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct TodoListView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -14,38 +13,43 @@ struct TodoListView: View {
     
     var body: some View {
         NavigationStack {
-            mainView
-                .onAppear {
-                    viewModel.eventOnAppear()
-                }
-                .onDisappear {
-                    viewModel.eventOnDisappear()
-                }
-                .sheet(isPresented: $viewModel.isShowingDetails) {
-                    DetailsView()
-                }
-                .navigationDestination(isPresented: $viewModel.isShowingCalendar) {
-                    CalendarViewRepresentable()
-                        .navigationTitle("Календарь")
-                        .navigationBarTitleDisplayMode(.inline)
-                        .ignoresSafeArea(.all)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            viewModel.isShowingCalendar.toggle()
-                        } label: {
-                            Image(systemName: "calendar")
-                        }
+            ZStack {
+                mainView
+                VStack {
+                    Spacer()
+                    CommonAddButton {
+                        let item = TodoItem(text: "", importance: .normal)
+                        viewModel.eventAdd(item: item)
+                        viewModel.eventTodoItemPressed(item: item)
                     }
-                    ToolbarItem(placement: .bottomBar) {
-                        CommonAddButton {
-                            viewModel.eventAdd(item: TodoItem(text: "", importance: .normal))
-                        }
-                        .padding(.bottom, 20)
+                    .padding(.bottom, 20)
+                }
+            }
+            .onAppear {
+                viewModel.eventOnAppear()
+            }
+            .onDisappear {
+                viewModel.eventOnDisappear()
+            }
+            .sheet(isPresented: $viewModel.isShowingDetails) {
+                DetailsView()
+            }
+            .navigationDestination(isPresented: $viewModel.isShowingCalendar) {
+                CalendarViewRepresentable()
+                    .navigationTitle("Календарь")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .ignoresSafeArea(.all)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.isShowingCalendar.toggle()
+                    } label: {
+                        Image(systemName: "calendar")
                     }
                 }
-                .navigationTitle("todo_list_view_title")
+            }
+            .navigationTitle("todo_list_view_title")
         }
     }
     
@@ -61,6 +65,7 @@ struct TodoListView: View {
                     .swipeActions(edge: .leading) {
                         Button(action: {
                             viewModel.filteredList[i].isDone.toggle()
+                            viewModel.eventUpdate(item: viewModel.filteredList[i])
                         }) {
                             Image(systemName: "checkmark.circle.fill")
                         }
@@ -68,7 +73,7 @@ struct TodoListView: View {
                     }
                     .swipeActions(edge: .trailing) {
                         Button("", systemImage: "trash") {
-                            // TODO: add deletion functionality.
+                            viewModel.eventDelete(item: viewModel.filteredList[i])
                         }
                         .tint(.red)
                         Button(action: {
@@ -95,6 +100,9 @@ struct TodoListView: View {
 
                 }
             }
+            Spacer()
+                .frame(height: 20)
+                .listRowBackground(Color.clear)
         }
     }
 }
