@@ -59,7 +59,15 @@ final class TodoListViewModel: ObservableObject {
         }
     }
     
+    func eventShowButtonPressed() {
+        isShowingAllItems.toggle()
+        fetchItems()
+    }
+    
     private func fetchItems() {
         filteredList = fileCache.items
+        if !isShowingAllItems {
+            filteredList = filteredList.filter({ !$0.isDone })
+        }
     }
 }

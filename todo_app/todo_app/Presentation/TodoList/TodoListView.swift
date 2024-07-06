@@ -84,13 +84,18 @@ struct TodoListView: View {
                         .tint(.gray)
                     }
                 }
+                TodoLastRowButton {
+                    let item = TodoItem(text: "", importance: .normal)
+                    viewModel.eventAdd(item: item)
+                    viewModel.eventTodoItemPressed(item: item)
+                }
             } header: {
                 HStack {
                     Text("Выполнено – \(0)")
                         .textCase(nil)
                     Spacer()
                     Button {
-                        viewModel.isShowingAllItems.toggle()
+                        viewModel.eventShowButtonPressed()
                     } label: {
                         Text(viewModel.isShowingAllItems ? "hide" : "show")
                             .font(.subheadline)

@@ -73,7 +73,7 @@ final class CalendarViewController: UIViewController {
         
         collectionView.pin(to: view, [.left, .right])
         collectionView.pinTop(to: view.safeAreaLayoutGuide.topAnchor)
-        collectionView.setHeight(to: 100)
+        collectionView.setHeight(to: 90)
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         
         let bottomBorder = UIView()
@@ -91,7 +91,7 @@ final class CalendarViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        tableView.register(TodoItemTableViewCell.self, forCellReuseIdentifier: TodoItemTableViewCell.reuseIdentifier)
     }
     
     private func fetchData() -> [TodoItem] {
@@ -100,18 +100,26 @@ final class CalendarViewController: UIViewController {
     }
     
     private func processTodoItems(_ items: [TodoItem]) -> [[TodoItem]] {
-        var groupedItems: [Date?: [TodoItem]] = [:]
+        var groupedItems: [DateComponents?: [TodoItem]] = [:]
         for item in items {
-            let date = item.deadline
-            if groupedItems[date] != nil {
-                groupedItems[date]?.append(item)
+            if let date = item.deadline {
+                let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
+                if groupedItems[components] != nil {
+                    groupedItems[components]?.append(item)
+                } else {
+                    groupedItems[components] = [item]
+                }
             } else {
-                groupedItems[date] = [item]
+                if groupedItems[nil] != nil {
+                    groupedItems[nil]?.append(item)
+                } else {
+                    groupedItems[nil] = [item]
+                }
             }
         }
         var result = Array(groupedItems.values)
         result = result.sorted(by: {
-            $0.first?.deadline ?? Date() < $1.first?.deadline ?? Date()
+            $0.first?.deadline ?? .distantFuture < $1.first?.deadline ?? .distantFuture
         })
         return result
     }
@@ -173,7 +181,7 @@ extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionViewCell", for: indexPath) as! DateCollectionViewCell
-        cell.textLabel.text = collectionViewData[indexPath.row]
+        cell.textLabel.text = collectionViewData[indexPath.row].replacingOccurrences(of: " ", with: "\n")
         cell.setSelected(selectedDateIndex == indexPath.row)
         return cell
     }
@@ -182,15 +190,17 @@ extension CalendarViewController: UICollectionViewDataSource {
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Done") { [weak self] (action, view, completionHandler) in
-            var item = self?.filteredData[indexPath.section][indexPath.row]
-            item?.isDone.toggle()
+            self?.filteredData[indexPath.section][indexPath.row].isDone.toggle()
+            let item = self?.filteredData[indexPath.section][indexPath.row]
             if let item {
                 if let index = self?.fileCache.items.firstIndex(where: { $0.id == item.id }) {
                     self?.fileCache.items[index] = item
+                    self?.fileCache.saveToFile(filename: FileCache.filename)
                 }
             }
+            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
             completionHandler(true)
-//            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+           
         }
         action.backgroundColor = UIColor(red: 0.2, green: 0.84, blue: 0.29, alpha: 1.0)
         action.image = UIImage(systemName: "checkmark.circle.fill")
@@ -200,6 +210,24 @@ extension CalendarViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let model = filteredData[indexPath.section][indexPath.row]
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            var actionsArray: [UIAction] = []
+            for item in Category.presets.values {
+                let action = UIAction(title: item.name) { [weak self] _ in
+                    self?.filteredData[indexPath.section][indexPath.row].category = item
+                    self?.fileCache.saveToFile(filename: FileCache.filename)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
+                actionsArray.append(action)
+            }
+            return UIMenu(title: "Применить категорию", children: actionsArray)
+        }
     }
 }
 
@@ -217,17 +245,8 @@ extension CalendarViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        let attributeString = NSMutableAttributedString(string: filteredData[indexPath.section][indexPath.row].text)
-        if filteredData[indexPath.section][indexPath.row].isDone {
-            attributeString.addAttributes([
-                        .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                        .foregroundColor: UIColor.gray
-                    ], range: NSMakeRange(0, attributeString.length))
-        }
-        content.attributedText = attributeString
-        cell.contentConfiguration = content
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoItemTableViewCell.reuseIdentifier, for: indexPath) as? TodoItemTableViewCell else { return UITableViewCell() }
+        cell.configure(with: filteredData[indexPath.section][indexPath.row])
         return cell
     }
     
