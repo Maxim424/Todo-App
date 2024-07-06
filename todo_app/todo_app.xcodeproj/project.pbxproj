@@ -10,7 +10,6 @@
 		4F2401082C24C668008E5935 /* todo_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401072C24C668008E5935 /* todo_appApp.swift */; };
 		4F24010C2C24C669008E5935 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F24010B2C24C669008E5935 /* Assets.xcassets */; };
 		4F24010F2C24C669008E5935 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F24010E2C24C669008E5935 /* Preview Assets.xcassets */; };
-		4F2401192C24C669008E5935 /* todo_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401182C24C669008E5935 /* todo_appTests.swift */; };
 		4F2401232C24C669008E5935 /* todo_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401222C24C669008E5935 /* todo_appUITests.swift */; };
 		4F2401252C24C669008E5935 /* todo_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401242C24C669008E5935 /* todo_appUITestsLaunchTests.swift */; };
 		4F2401332C24C7A1008E5935 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401322C24C7A1008E5935 /* TodoItem.swift */; };
@@ -19,6 +18,17 @@
 		4F2401392C24D7EC008E5935 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401382C24D7EC008E5935 /* FileCache.swift */; };
 		4F2401402C25CD1C008E5935 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */; };
 		4F2401432C25D5DD008E5935 /* TodoItem+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */; };
+		4F26FF062C35D5B0003FCE3A /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26FF052C35D5B0003FCE3A /* DateCollectionViewCell.swift */; };
+		4F26FF082C35DA15003FCE3A /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26FF072C35DA15003FCE3A /* UIColor+hex.swift */; };
+		4F26FF0A2C35DA9B003FCE3A /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26FF092C35DA9B003FCE3A /* Color+hex.swift */; };
+		4F36DF842C34918200339684 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF832C34918200339684 /* CalendarViewController.swift */; };
+		4F36DF872C34929B00339684 /* UIView+pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF862C34929B00339684 /* UIView+pin.swift */; };
+		4F36DF892C34983300339684 /* CalendarViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF882C34983300339684 /* CalendarViewRepresentable.swift */; };
+		4F36DF8B2C349CBF00339684 /* Date+getString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36DF8A2C349CBF00339684 /* Date+getString.swift */; };
+		4F7D23EE2C38BE3800831299 /* TodoLastRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D23ED2C38BE3800831299 /* TodoLastRowButton.swift */; };
+		4F7D23F22C38C11200831299 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D23F12C38C11200831299 /* Category.swift */; };
+		4F7D23F42C38CAFB00831299 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D23F32C38CAFB00831299 /* TodoItemTableViewCell.swift */; };
+		4FBB48282C373DF000E29CC5 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */; };
 		4FD483322C2EE8C500DED81A /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483312C2EE8C500DED81A /* TodoListView.swift */; };
 		4FD483362C2EEA0800DED81A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4FD483352C2EEA0800DED81A /* Localizable.xcstrings */; };
 		4FD483392C2EF21700DED81A /* CommonAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483382C2EF21700DED81A /* CommonAddButton.swift */; };
@@ -27,7 +37,6 @@
 		4FD483412C2F1DE000DED81A /* CommonImportancePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */; };
 		4FD483432C2F235400DED81A /* CommonDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483422C2F235400DED81A /* CommonDatePickerView.swift */; };
 		4FD483472C2F6B0000DED81A /* CommonColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483462C2F6B0000DED81A /* CommonColorPickerView.swift */; };
-		4FD4834A2C2F796600DED81A /* TodoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483492C2F796600DED81A /* TodoItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +62,6 @@
 		4F24010B2C24C669008E5935 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F24010E2C24C669008E5935 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4F2401142C24C669008E5935 /* todo_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todo_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F2401182C24C669008E5935 /* todo_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todo_appTests.swift; sourceTree = "<group>"; };
 		4F24011E2C24C669008E5935 /* todo_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todo_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2401222C24C669008E5935 /* todo_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todo_appUITests.swift; sourceTree = "<group>"; };
 		4F2401242C24C669008E5935 /* todo_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todo_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -63,6 +71,17 @@
 		4F2401382C24D7EC008E5935 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
 		4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+CSV.swift"; sourceTree = "<group>"; };
+		4F26FF052C35D5B0003FCE3A /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		4F26FF072C35DA15003FCE3A /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		4F26FF092C35DA9B003FCE3A /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
+		4F36DF832C34918200339684 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		4F36DF862C34929B00339684 /* UIView+pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+pin.swift"; sourceTree = "<group>"; };
+		4F36DF882C34983300339684 /* CalendarViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewRepresentable.swift; sourceTree = "<group>"; };
+		4F36DF8A2C349CBF00339684 /* Date+getString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+getString.swift"; sourceTree = "<group>"; };
+		4F7D23ED2C38BE3800831299 /* TodoLastRowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoLastRowButton.swift; sourceTree = "<group>"; };
+		4F7D23F12C38C11200831299 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		4F7D23F32C38CAFB00831299 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
+		4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		4FD483312C2EE8C500DED81A /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		4FD483352C2EEA0800DED81A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4FD483382C2EF21700DED81A /* CommonAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAddButton.swift; sourceTree = "<group>"; };
@@ -71,7 +90,6 @@
 		4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonImportancePickerView.swift; sourceTree = "<group>"; };
 		4FD483422C2F235400DED81A /* CommonDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDatePickerView.swift; sourceTree = "<group>"; };
 		4FD483462C2F6B0000DED81A /* CommonColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColorPickerView.swift; sourceTree = "<group>"; };
-		4FD483492C2F796600DED81A /* TodoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +159,6 @@
 		4F2401172C24C669008E5935 /* todo_appTests */ = {
 			isa = PBXGroup;
 			children = (
-				4F2401182C24C669008E5935 /* todo_appTests.swift */,
 				4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */,
 			);
 			path = todo_appTests;
@@ -159,19 +176,70 @@
 		4F2401312C24C792008E5935 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4F7D23F02C38C10300831299 /* Catgory */,
+				4F7D23EF2C38C0F700831299 /* TodoItem */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4F36DF822C3490F300339684 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				4F36DF832C34918200339684 /* CalendarViewController.swift */,
+				4F36DF882C34983300339684 /* CalendarViewRepresentable.swift */,
+				4F26FF052C35D5B0003FCE3A /* DateCollectionViewCell.swift */,
+				4F7D23F32C38CAFB00831299 /* TodoItemTableViewCell.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		4F36DF852C34929200339684 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4F36DF862C34929B00339684 /* UIView+pin.swift */,
+				4F36DF8A2C349CBF00339684 /* Date+getString.swift */,
+				4F26FF072C35DA15003FCE3A /* UIColor+hex.swift */,
+				4F26FF092C35DA9B003FCE3A /* Color+hex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4F7D23EA2C3809B300831299 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4FD483382C2EF21700DED81A /* CommonAddButton.swift */,
+				4FD483422C2F235400DED81A /* CommonDatePickerView.swift */,
+				4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */,
+				4FD483462C2F6B0000DED81A /* CommonColorPickerView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4F7D23EF2C38C0F700831299 /* TodoItem */ = {
+			isa = PBXGroup;
+			children = (
 				4F2401322C24C7A1008E5935 /* TodoItem.swift */,
 				4F2401342C24C92B008E5935 /* TodoItem+JSON.swift */,
 				4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */,
 			);
-			path = Models;
+			path = TodoItem;
+			sourceTree = "<group>";
+		};
+		4F7D23F02C38C10300831299 /* Catgory */ = {
+			isa = PBXGroup;
+			children = (
+				4F7D23F12C38C11200831299 /* Category.swift */,
+			);
+			path = Catgory;
 			sourceTree = "<group>";
 		};
 		4FD4832F2C2EE88000DED81A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				4FD483482C2F795600DED81A /* Models */,
+				4F7D23EA2C3809B300831299 /* Common */,
+				4F36DF852C34929200339684 /* Extensions */,
+				4F36DF822C3490F300339684 /* Calendar */,
 				4FD483302C2EE88B00DED81A /* TodoList */,
-				4FD4833D2C2F041A00DED81A /* Details */,
 				4F2401072C24C668008E5935 /* todo_appApp.swift */,
 			);
 			path = Presentation;
@@ -180,9 +248,10 @@
 		4FD483302C2EE88B00DED81A /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				4FD4833D2C2F041A00DED81A /* Details */,
 				4FD4833A2C2EF6F500DED81A /* TodoRow */,
 				4FD483312C2EE8C500DED81A /* TodoListView.swift */,
-				4FD483382C2EF21700DED81A /* CommonAddButton.swift */,
+				4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -210,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				4FD4833B2C2EF70B00DED81A /* TodoRowView.swift */,
+				4F7D23ED2C38BE3800831299 /* TodoLastRowButton.swift */,
 			);
 			path = TodoRow;
 			sourceTree = "<group>";
@@ -218,19 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				4FD4833E2C2F043000DED81A /* DetailsView.swift */,
-				4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */,
-				4FD483422C2F235400DED81A /* CommonDatePickerView.swift */,
-				4FD483462C2F6B0000DED81A /* CommonColorPickerView.swift */,
 			);
 			path = Details;
-			sourceTree = "<group>";
-		};
-		4FD483482C2F795600DED81A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4FD483492C2F796600DED81A /* TodoItemModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,18 +423,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FD4834A2C2F796600DED81A /* TodoItemModel.swift in Sources */,
+				4FBB48282C373DF000E29CC5 /* TodoListViewModel.swift in Sources */,
+				4F36DF842C34918200339684 /* CalendarViewController.swift in Sources */,
+				4F7D23EE2C38BE3800831299 /* TodoLastRowButton.swift in Sources */,
 				4F2401432C25D5DD008E5935 /* TodoItem+CSV.swift in Sources */,
 				4FD4833F2C2F043000DED81A /* DetailsView.swift in Sources */,
 				4FD483472C2F6B0000DED81A /* CommonColorPickerView.swift in Sources */,
 				4FD4833C2C2EF70B00DED81A /* TodoRowView.swift in Sources */,
+				4F26FF0A2C35DA9B003FCE3A /* Color+hex.swift in Sources */,
+				4F36DF872C34929B00339684 /* UIView+pin.swift in Sources */,
 				4F2401372C24D498008E5935 /* Logger.swift in Sources */,
 				4FD483322C2EE8C500DED81A /* TodoListView.swift in Sources */,
 				4FD483432C2F235400DED81A /* CommonDatePickerView.swift in Sources */,
 				4F2401352C24C92B008E5935 /* TodoItem+JSON.swift in Sources */,
+				4F36DF8B2C349CBF00339684 /* Date+getString.swift in Sources */,
+				4F7D23F42C38CAFB00831299 /* TodoItemTableViewCell.swift in Sources */,
+				4F7D23F22C38C11200831299 /* Category.swift in Sources */,
 				4F2401332C24C7A1008E5935 /* TodoItem.swift in Sources */,
+				4F26FF062C35D5B0003FCE3A /* DateCollectionViewCell.swift in Sources */,
 				4F2401392C24D7EC008E5935 /* FileCache.swift in Sources */,
+				4F36DF892C34983300339684 /* CalendarViewRepresentable.swift in Sources */,
 				4FD483412C2F1DE000DED81A /* CommonImportancePickerView.swift in Sources */,
+				4F26FF082C35DA15003FCE3A /* UIColor+hex.swift in Sources */,
 				4FD483392C2EF21700DED81A /* CommonAddButton.swift in Sources */,
 				4F2401082C24C668008E5935 /* todo_appApp.swift in Sources */,
 			);
@@ -386,7 +455,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F2401402C25CD1C008E5935 /* TodoItemTests.swift in Sources */,
-				4F2401192C24C669008E5935 /* todo_appTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,9 @@ extension TodoItem {
               let text = dictionary["text"] as? String,
               let isDone = dictionary["isDone"] as? Bool,
               let creationDateString = dictionary["creationDate"] as? String,
-              let creationDate = ISO8601DateFormatter().date(from: creationDateString)
+              let creationDate = ISO8601DateFormatter().date(from: creationDateString),
+              let categoryDict = dictionary["category"],
+              let category = Category.parse(json: categoryDict)
         else {
             return nil
         }
@@ -44,7 +46,8 @@ extension TodoItem {
             deadline: deadline,
             isDone: isDone,
             creationDate: creationDate,
-            modificationDate: modificationDate
+            modificationDate: modificationDate,
+            category: category
         )
     }
     
@@ -53,7 +56,8 @@ extension TodoItem {
             "id": id,
             "text": text,
             "isDone": isDone,
-            "creationDate": ISO8601DateFormatter().string(from: creationDate)
+            "creationDate": ISO8601DateFormatter().string(from: creationDate),
+            "category": category.json
         ]
         
         if importance != .normal {

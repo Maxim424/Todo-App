@@ -6,81 +6,108 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct TodoListView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.modelContext) private var context
-    @State private var isShowingDetails = false
-    @State private var isShowingAllItems = false
-    @State private var currentModel: TodoItemModel? = nil
-    @Query(filter: #Predicate<TodoItemModel> { !$0.isDone }, sort: [SortDescriptor(\TodoItemModel.modificationDate, order: .reverse)], animation: .snappy) private var activeList: [TodoItemModel]
-    @Query(sort: [SortDescriptor(\TodoItemModel.modificationDate, order: .reverse)], animation: .snappy) private var fullList: [TodoItemModel]
+    @EnvironmentObject private var viewModel: TodoListViewModel
     
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(isShowingAllItems ? fullList : activeList) { item in
-                        Button(action: {
-                            currentModel = item
-                            isShowingDetails = true
-                        }, label: {
-                            TodoRowView(model: item)
-                        })
-                        .swipeActions(edge: .leading) {
-                            Button(action: {
-                                item.isDone.toggle()
-                            }) {
-                                Image(systemName: "checkmark.circle.fill")
-                            }
-                            .tint(.green)
-                        }
-                        .swipeActions(edge: .trailing) {
-                            Button("", systemImage: "trash") {
-                                context.delete(item)
-                            }
-                            .tint(.red)
-                            Button(action: {
-                                isShowingDetails = true
-                            }) {
-                                Image("i.circle.fill")
-                            }
-                            .tint(.gray)
-                        }
-                    }
-                } header: {
-                    HStack {
-                        Text("Выполнено – \(fullList.count - activeList.count)")
-                            .textCase(nil)
-                        Spacer()
-                        Button {
-                            isShowingAllItems.toggle()
-                        } label: {
-                            Text(isShowingAllItems ? "hide" : "show")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .textCase(nil)
-                        }
-
-                    }
-                }
-            }
-            .sheet(isPresented: $isShowingDetails) {
-                if let currentModel {
-                    DetailsView(model: currentModel)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+            ZStack {
+                mainView
+                VStack {
+                    Spacer()
                     CommonAddButton {
-                        let todoItem = TodoItemModel(text: "", importance: .normal)
-                        context.insert(todoItem)
+                        let item = TodoItem(text: "", importance: .normal)
+                        viewModel.eventAdd(item: item)
+                        viewModel.eventTodoItemPressed(item: item)
                     }
                     .padding(.bottom, 20)
                 }
             }
+            .onAppear {
+                viewModel.eventOnAppear()
+            }
+            .onDisappear {
+                viewModel.eventOnDisappear()
+            }
+            .sheet(isPresented: $viewModel.isShowingDetails) {
+                DetailsView()
+            }
+            .navigationDestination(isPresented: $viewModel.isShowingCalendar) {
+                CalendarViewRepresentable()
+                    .navigationTitle("Календарь")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .ignoresSafeArea(.all)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.isShowingCalendar.toggle()
+                    } label: {
+                        Image(systemName: "calendar")
+                    }
+                }
+            }
             .navigationTitle("todo_list_view_title")
+        }
+    }
+    
+    private var mainView: some View {
+        List {
+            Section {
+                ForEach(viewModel.filteredList.indices, id: \.self) { i in
+                    Button {
+                        viewModel.eventTodoItemPressed(item: viewModel.filteredList[i])
+                    } label: {
+                        TodoRowView(model: $viewModel.filteredList[i])
+                    }
+                    .swipeActions(edge: .leading) {
+                        Button(action: {
+                            viewModel.filteredList[i].isDone.toggle()
+                            viewModel.eventUpdate(item: viewModel.filteredList[i])
+                        }) {
+                            Image(systemName: "checkmark.circle.fill")
+                        }
+                        .tint(.green)
+                    }
+                    .swipeActions(edge: .trailing) {
+                        Button("", systemImage: "trash") {
+                            viewModel.eventDelete(item: viewModel.filteredList[i])
+                        }
+                        .tint(.red)
+                        Button(action: {
+                            viewModel.isShowingDetails = true
+                        }) {
+                            Image("i.circle.fill")
+                        }
+                        .tint(.gray)
+                    }
+                }
+                TodoLastRowButton {
+                    let item = TodoItem(text: "", importance: .normal)
+                    viewModel.eventAdd(item: item)
+                    viewModel.eventTodoItemPressed(item: item)
+                }
+            } header: {
+                HStack {
+                    Text("Выполнено – \(0)")
+                        .textCase(nil)
+                    Spacer()
+                    Button {
+                        viewModel.eventShowButtonPressed()
+                    } label: {
+                        Text(viewModel.isShowingAllItems ? "hide" : "show")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .textCase(nil)
+                    }
+
+                }
+            }
+            Spacer()
+                .frame(height: 20)
+                .listRowBackground(Color.clear)
         }
     }
 }
