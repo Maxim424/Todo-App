@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import OSLog
+import CocoaLumberjackSwift
 
 struct Category {
     let name: String
@@ -22,12 +22,13 @@ struct Category {
     
     static func parse(json: Any) -> Category? {
         guard let dictionary = json as? [String: Any] else {
-            Logger.services.warning("Failed to parse json.")
+            DDLogError("Failed to parse Category json.")
             return nil
         }
         guard let name = dictionary["name"] as? String,
               let color = dictionary["color"] as? Int
         else {
+            DDLogError("Failed to parse Category json.")
             return nil
         }
         return Category(

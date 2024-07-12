@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import OSLog
+import CocoaLumberjackSwift
 
 extension TodoItem {
     static func parse(json: Any) -> TodoItem? {
         guard let dictionary = json as? [String: Any] else {
-            Logger.services.warning("Failed to parse json.")
+            DDLogError("Failed to parse TodoItem json.")
             return nil
         }
         

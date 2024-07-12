@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import OSLog
+import CocoaLumberjackSwift
 
 final class FileCache {
     static var filename = "todo_list.json"
@@ -38,7 +38,7 @@ final class FileCache {
             let url = getDocumentsDirectory().appendingPathComponent(filename)
             try jsonData.write(to: url)
         } catch {
-            Logger.services.warning("Failed to save json.")
+            DDLogError("Failed to save json.")
         }
     }
 
@@ -48,12 +48,12 @@ final class FileCache {
             let jsonData = try Data(contentsOf: url)
             guard let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]]
             else {
-                Logger.services.warning("Failed to load json from file.")
+                DDLogError("Failed to load json from file.")
                 return
             }
             todoItems = jsonArray.compactMap { TodoItem.parse(json: $0) }
         } catch {
-            Logger.services.warning("Failed to load json from file.")
+            DDLogError("Failed to load json from file.")
         }
     }
 

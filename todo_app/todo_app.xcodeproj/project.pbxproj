@@ -17,7 +17,6 @@
 		4F2401252C24C669008E5935 /* todo_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401242C24C669008E5935 /* todo_appUITestsLaunchTests.swift */; };
 		4F2401332C24C7A1008E5935 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401322C24C7A1008E5935 /* TodoItem.swift */; };
 		4F2401352C24C92B008E5935 /* TodoItem+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401342C24C92B008E5935 /* TodoItem+JSON.swift */; };
-		4F2401372C24D498008E5935 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401362C24D498008E5935 /* Logger.swift */; };
 		4F2401392C24D7EC008E5935 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401382C24D7EC008E5935 /* FileCache.swift */; };
 		4F2401402C25CD1C008E5935 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */; };
 		4F2401432C25D5DD008E5935 /* TodoItem+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */; };
@@ -70,7 +69,6 @@
 		4F2401242C24C669008E5935 /* todo_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todo_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4F2401322C24C7A1008E5935 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		4F2401342C24C92B008E5935 /* TodoItem+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+JSON.swift"; sourceTree = "<group>"; };
-		4F2401362C24D498008E5935 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4F2401382C24D7EC008E5935 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
 		4F2401422C25D5DD008E5935 /* TodoItem+CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+CSV.swift"; sourceTree = "<group>"; };
@@ -213,6 +211,7 @@
 		4F7D23EA2C3809B300831299 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4F36DF852C34929200339684 /* Extensions */,
 				4FD483382C2EF21700DED81A /* CommonAddButton.swift */,
 				4FD483422C2F235400DED81A /* CommonDatePickerView.swift */,
 				4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */,
@@ -242,11 +241,10 @@
 		4FD4832F2C2EE88000DED81A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4F2401072C24C668008E5935 /* todo_appApp.swift */,
 				4F7D23EA2C3809B300831299 /* Common */,
-				4F36DF852C34929200339684 /* Extensions */,
 				4F36DF822C3490F300339684 /* Calendar */,
 				4FD483302C2EE88B00DED81A /* TodoList */,
-				4F2401072C24C668008E5935 /* todo_appApp.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -266,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				4F2401382C24D7EC008E5935 /* FileCache.swift */,
-				4F2401362C24D498008E5935 /* Logger.swift */,
 				4F2401312C24C792008E5935 /* Models */,
 			);
 			path = BusinessLogic;
@@ -446,7 +443,6 @@
 				4FD4833C2C2EF70B00DED81A /* TodoRowView.swift in Sources */,
 				4F26FF0A2C35DA9B003FCE3A /* Color+hex.swift in Sources */,
 				4F36DF872C34929B00339684 /* UIView+pin.swift in Sources */,
-				4F2401372C24D498008E5935 /* Logger.swift in Sources */,
 				4FD483322C2EE8C500DED81A /* TodoListView.swift in Sources */,
 				4FD483432C2F235400DED81A /* CommonDatePickerView.swift in Sources */,
 				4F2401352C24C92B008E5935 /* TodoItem+JSON.swift in Sources */,
@@ -640,7 +636,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mvkuzn.todo-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mvkuzn.todo-app1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -672,7 +668,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mvkuzn.todo-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mvkuzn.todo-app1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

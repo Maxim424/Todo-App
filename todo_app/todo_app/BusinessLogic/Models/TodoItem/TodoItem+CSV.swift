@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import CocoaLumberjackSwift
 
 extension TodoItem {
     static func parse(csv: String) -> TodoItem? {
         let components = parseCSVLine(csv)
         guard components.count >= 6 else {
+            DDLogError("Failed to parse TodoItem csv.")
             return nil
         }
         
