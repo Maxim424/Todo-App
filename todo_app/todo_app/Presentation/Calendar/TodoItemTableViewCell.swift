@@ -34,10 +34,11 @@ class TodoItemTableViewCell: UITableViewCell {
         
         if todoItem.isDone {
             let attributeString = NSMutableAttributedString(string: todoItem.text)
+            let range = NSRange(location: 0, length: attributeString.length)
             attributeString.addAttributes([
                 .strikethroughStyle: NSUnderlineStyle.single.rawValue,
                 .foregroundColor: UIColor.gray
-            ], range: NSMakeRange(0, attributeString.length))
+            ], range: range)
             content.attributedText = attributeString
         } else {
             content.text = todoItem.text
@@ -48,4 +49,3 @@ class TodoItemTableViewCell: UITableViewCell {
         categoryView.backgroundColor = UIColor(rgb: todoItem.category.color)
     }
 }
-

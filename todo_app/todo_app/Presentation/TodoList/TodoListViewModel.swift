@@ -14,9 +14,9 @@ final class TodoListViewModel: ObservableObject {
     @Published var currentItem: TodoItem? = nil
     @Published var filteredList: [TodoItem] = []
     private var fileCache: FileCache
-    private var completion: (() -> ())?
+    private var completion: (() -> Void)?
     
-    init(fileCache: FileCache, completion: (() -> ())? = nil) {
+    init(fileCache: FileCache, completion: (() -> Void)? = nil) {
         self.fileCache = fileCache
         self.completion = completion
     }
