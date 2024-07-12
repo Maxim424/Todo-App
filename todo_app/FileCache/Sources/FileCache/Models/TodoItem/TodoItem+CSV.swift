@@ -9,7 +9,7 @@ import Foundation
 import CocoaLumberjackSwift
 
 extension TodoItem {
-    static func parse(csv: String) -> TodoItem? {
+    public static func parse(csv: String) -> TodoItem? {
         let components = parseCSVLine(csv)
         guard components.count >= 6 else {
             DDLogError("Failed to parse TodoItem csv.")
@@ -57,7 +57,7 @@ extension TodoItem {
         return components
     }
     
-    var csv: String {
+    public var csv: String {
         var components: [String] = [
             id,
             // Surround text with quotes to avoid parsing errors.

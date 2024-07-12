@@ -27,6 +27,7 @@
 		4F7D23EE2C38BE3800831299 /* TodoLastRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D23ED2C38BE3800831299 /* TodoLastRowButton.swift */; };
 		4F7D23F42C38CAFB00831299 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D23F32C38CAFB00831299 /* TodoItemTableViewCell.swift */; };
 		4FA7AC1F2C41BC20001F4CC2 /* FileCache in Frameworks */ = {isa = PBXBuildFile; productRef = 4FA7AC1E2C41BC20001F4CC2 /* FileCache */; };
+		4FA7AC242C41C462001F4CC2 /* URLSession+dataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA7AC232C41C462001F4CC2 /* URLSession+dataTask.swift */; };
 		4FBB48282C373DF000E29CC5 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */; };
 		4FD483322C2EE8C500DED81A /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483312C2EE8C500DED81A /* TodoListView.swift */; };
 		4FD483362C2EEA0800DED81A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4FD483352C2EEA0800DED81A /* Localizable.xcstrings */; };
@@ -36,6 +37,7 @@
 		4FD483412C2F1DE000DED81A /* CommonImportancePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */; };
 		4FD483432C2F235400DED81A /* CommonDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483422C2F235400DED81A /* CommonDatePickerView.swift */; };
 		4FD483472C2F6B0000DED81A /* CommonColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD483462C2F6B0000DED81A /* CommonColorPickerView.swift */; };
+		4FFB22A42C41CD660054EE6F /* URLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB22A32C41CD660054EE6F /* URLSessionTests.swift */; };
 		52B65D74AE9D1D2254A58806 /* Pods_todo_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1724BEDD075BBA19BE0E849 /* Pods_todo_appTests.framework */; };
 		E6DE28B0EAE0844F554BD4E3 /* Pods_todo_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD08A74F5C62A20141A1F3 /* Pods_todo_app.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,7 @@
 		4F36DF8A2C349CBF00339684 /* Date+getString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+getString.swift"; sourceTree = "<group>"; };
 		4F7D23ED2C38BE3800831299 /* TodoLastRowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoLastRowButton.swift; sourceTree = "<group>"; };
 		4F7D23F32C38CAFB00831299 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
+		4FA7AC232C41C462001F4CC2 /* URLSession+dataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+dataTask.swift"; sourceTree = "<group>"; };
 		4FBB48272C373DF000E29CC5 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		4FD483312C2EE8C500DED81A /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		4FD483352C2EEA0800DED81A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		4FD483402C2F1DDF00DED81A /* CommonImportancePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonImportancePickerView.swift; sourceTree = "<group>"; };
 		4FD483422C2F235400DED81A /* CommonDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDatePickerView.swift; sourceTree = "<group>"; };
 		4FD483462C2F6B0000DED81A /* CommonColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColorPickerView.swift; sourceTree = "<group>"; };
+		4FFB22A32C41CD660054EE6F /* URLSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTests.swift; sourceTree = "<group>"; };
 		591D8A4C31CBBED9D379DF1F /* Pods-todo_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo_app.release.xcconfig"; path = "Target Support Files/Pods-todo_app/Pods-todo_app.release.xcconfig"; sourceTree = "<group>"; };
 		737A4E23150E3B0FF3829D02 /* Pods_todo_app_todo_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todo_app_todo_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD08A74F5C62A20141A1F3 /* Pods_todo_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todo_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				4F24013F2C25CD1C008E5935 /* TodoItemTests.swift */,
+				4FFB22A32C41CD660054EE6F /* URLSessionTests.swift */,
 			);
 			path = todo_appTests;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				4F36DF8A2C349CBF00339684 /* Date+getString.swift */,
 				4F26FF072C35DA15003FCE3A /* UIColor+hex.swift */,
 				4F26FF092C35DA9B003FCE3A /* Color+hex.swift */,
+				4FA7AC232C41C462001F4CC2 /* URLSession+dataTask.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -527,6 +533,7 @@
 				4F36DF842C34918200339684 /* CalendarViewController.swift in Sources */,
 				4F7D23EE2C38BE3800831299 /* TodoLastRowButton.swift in Sources */,
 				4FD4833F2C2F043000DED81A /* DetailsView.swift in Sources */,
+				4FA7AC242C41C462001F4CC2 /* URLSession+dataTask.swift in Sources */,
 				4FD483472C2F6B0000DED81A /* CommonColorPickerView.swift in Sources */,
 				4FD4833C2C2EF70B00DED81A /* TodoRowView.swift in Sources */,
 				4F26FF0A2C35DA9B003FCE3A /* Color+hex.swift in Sources */,
@@ -548,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFB22A42C41CD660054EE6F /* URLSessionTests.swift in Sources */,
 				4F2401402C25CD1C008E5935 /* TodoItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,6 +733,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mvkuzn.todo-app1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -759,6 +768,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mvkuzn.todo-app1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
