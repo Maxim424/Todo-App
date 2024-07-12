@@ -7,11 +7,12 @@
 
 import UIKit
 import SwiftUI
+import FileCache
 
 final class CalendarViewController: UIViewController {
     private  let fileCache = FileCache()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private var collectionView: UICollectionView {
+    private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 5
@@ -19,7 +20,7 @@ final class CalendarViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
-    }
+    }()
     private let addButton = UIButton(type: .system)
     private var selectedDateIndex = 0
     private var tableViewData: [TodoItem] = []

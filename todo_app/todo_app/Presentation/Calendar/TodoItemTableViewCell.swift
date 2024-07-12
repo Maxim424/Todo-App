@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FileCache
 
 class TodoItemTableViewCell: UITableViewCell {
     static var reuseIdentifier = "TodoItemTableViewCell"

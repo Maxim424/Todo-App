@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FileCache
 
 struct DetailsView: View {
     @Environment(\.dismiss) var dismiss

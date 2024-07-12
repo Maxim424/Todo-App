@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FileCache
 
 struct CommonImportancePickerView: View {
     @Binding var selectedSegment: Importance

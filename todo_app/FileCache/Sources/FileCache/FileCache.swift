@@ -8,11 +8,13 @@
 import Foundation
 import CocoaLumberjackSwift
 
-final class FileCache {
-    static var filename = "todo_list.json"
+final public class FileCache {
+    public static var filename = "todo_list.json"
     private var todoItems: [TodoItem] = []
+    
+    public init() { }
 
-    var items: [TodoItem] {
+    public var items: [TodoItem] {
         get {
             todoItems
         }
@@ -21,17 +23,17 @@ final class FileCache {
         }
     }
 
-    func addTodoItem(_ item: TodoItem) {
+    public func addTodoItem(_ item: TodoItem) {
         if !todoItems.contains(where: { $0.id == item.id }) {
             todoItems.append(item)
         }
     }
 
-    func removeTodoItem(by id: String) {
+    public func removeTodoItem(by id: String) {
         todoItems.removeAll { $0.id == id }
     }
 
-    func saveToFile(filename: String) {
+    public func saveToFile(filename: String) {
         let jsonArray = todoItems.map { $0.json }
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: jsonArray, options: [.prettyPrinted])
@@ -42,7 +44,7 @@ final class FileCache {
         }
     }
 
-    func loadFromFile(filename: String) {
+    public func loadFromFile(filename: String) {
         let url = getDocumentsDirectory().appendingPathComponent(filename)
         do {
             let jsonData = try Data(contentsOf: url)

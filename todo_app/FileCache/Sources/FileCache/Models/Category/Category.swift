@@ -8,11 +8,16 @@
 import UIKit
 import CocoaLumberjackSwift
 
-struct Category {
-    let name: String
-    let color: Int // hex representation
+public struct Category {
+    public let name: String
+    public let color: Int // hex representation
     
-    var json: Any {
+    public init(name: String, color: Int) {
+        self.name = name
+        self.color = color
+    }
+    
+    public var json: Any {
         let dictionary: [String: Any] = [
             "name": name,
             "color": color
@@ -20,7 +25,7 @@ struct Category {
         return dictionary
     }
     
-    static func parse(json: Any) -> Category? {
+    public static func parse(json: Any) -> Category? {
         guard let dictionary = json as? [String: Any] else {
             DDLogError("Failed to parse Category json.")
             return nil
@@ -37,14 +42,14 @@ struct Category {
         )
     }
     
-    static let presets: [CategoryPresets: Category] = [
+    public static let presets: [CategoryPresets: Category] = [
         .work: .init(name: "работа", color: 0xFF3B31),
         .study: .init(name: "учеба", color: 0x0078FA),
         .hobby: .init(name: "хобби", color: 0x35C759),
         .other: .init(name: "другое", color: 0xA0A0A0)
     ]
     
-    enum CategoryPresets {
+    public enum CategoryPresets {
         case work
         case study
         case hobby

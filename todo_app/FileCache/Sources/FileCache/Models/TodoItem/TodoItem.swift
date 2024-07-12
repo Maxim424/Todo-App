@@ -7,23 +7,23 @@
 
 import Foundation
 
-enum Importance: String, Codable, CaseIterable {
+public enum Importance: String, Codable, CaseIterable {
     case notImportant
     case normal
     case important
 }
 
-struct TodoItem: Identifiable {
-    let id: String
-    var text: String
-    var importance: Importance
-    var deadline: Date?
-    var isDone: Bool
-    var creationDate: Date
-    var modificationDate: Date?
-    var category: Category
+public struct TodoItem: Identifiable {
+    public let id: String
+    public var text: String
+    public var importance: Importance
+    public var deadline: Date?
+    public var isDone: Bool
+    public var creationDate: Date
+    public var modificationDate: Date?
+    public var category: Category
     
-    init(
+    public init(
         id: String = UUID().uuidString,
         text: String,
         importance: Importance,
