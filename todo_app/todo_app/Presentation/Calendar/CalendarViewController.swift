@@ -7,11 +7,20 @@
 
 import UIKit
 import SwiftUI
+import FileCache
 
 final class CalendarViewController: UIViewController {
     private  let fileCache = FileCache()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private var collectionView: UICollectionView!
+    private var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
     private let addButton = UIButton(type: .system)
     private var selectedDateIndex = 0
     private var tableViewData: [TodoItem] = []
@@ -57,12 +66,6 @@ final class CalendarViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -213,7 +216,6 @@ extension CalendarViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let model = filteredData[indexPath.section][indexPath.row]
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
             var actionsArray: [UIAction] = []
             for item in Category.presets.values {
