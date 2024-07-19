@@ -9,7 +9,7 @@ import Foundation
 import CocoaLumberjackSwift
 
 final public class FileCache {
-    public static var filename = "todo_list.json"
+    public static let filename = "todo_list.json"
     private var todoItems: [TodoItem] = []
     
     public init() { }
