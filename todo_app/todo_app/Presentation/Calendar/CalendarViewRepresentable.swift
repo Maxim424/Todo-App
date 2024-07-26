@@ -12,7 +12,5 @@ struct CalendarViewRepresentable: UIViewControllerRepresentable {
         return CalendarViewController()
     }
 
-    func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {
-        
-    }
+    func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) { }
 }

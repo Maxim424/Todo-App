@@ -10,7 +10,7 @@ import SwiftUI
 import FileCache
 
 final class CalendarViewController: UIViewController {
-    private  let fileCache = FileCache()
+    private  let fileCache = DefaultFileCache()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -39,7 +39,7 @@ final class CalendarViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        fileCache.saveToFile(filename: FileCache.filename)
+        fileCache.saveToFile(filename: DefaultFileCache.filename)
     }
     
     private func setupView() {
@@ -98,7 +98,7 @@ final class CalendarViewController: UIViewController {
     }
     
     private func fetchData() -> [TodoItem] {
-        fileCache.loadFromFile(filename: FileCache.filename)
+        fileCache.loadFromFile(filename: DefaultFileCache.filename)
         return fileCache.items
     }
     
@@ -147,7 +147,7 @@ final class CalendarViewController: UIViewController {
     private func addButtonPressed() {
         let item = TodoItem(text: "", importance: .normal)
         fileCache.addTodoItem(item)
-        fileCache.saveToFile(filename: FileCache.filename)
+        fileCache.saveToFile(filename: DefaultFileCache.filename)
         let viewModel = TodoListViewModel(fileCache: fileCache) { [weak self] in
             self?.fetch()
         }
@@ -198,7 +198,7 @@ extension CalendarViewController: UITableViewDelegate {
             if let item {
                 if let index = self?.fileCache.items.firstIndex(where: { $0.id == item.id }) {
                     self?.fileCache.items[index] = item
-                    self?.fileCache.saveToFile(filename: FileCache.filename)
+                    self?.fileCache.saveToFile(filename: DefaultFileCache.filename)
                 }
             }
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -221,7 +221,7 @@ extension CalendarViewController: UITableViewDelegate {
             for item in Category.presets.values {
                 let action = UIAction(title: item.name) { [weak self] _ in
                     self?.filteredData[indexPath.section][indexPath.row].category = item
-                    self?.fileCache.saveToFile(filename: FileCache.filename)
+                    self?.fileCache.saveToFile(filename: DefaultFileCache.filename)
                     DispatchQueue.main.async {
                         self?.tableView.reloadRows(at: [indexPath], with: .automatic)
                     }
