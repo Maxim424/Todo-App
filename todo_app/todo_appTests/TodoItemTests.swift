@@ -10,10 +10,10 @@ import FileCache
 @testable import todo_app
 
 final class TodoItemTests: XCTestCase {
-    var fileCache: FileCache!
+    var fileCache: DefaultFileCache!
 
     override func setUpWithError() throws {
-        fileCache = FileCache()
+        fileCache = DefaultFileCache()
     }
 
     override func tearDownWithError() throws {

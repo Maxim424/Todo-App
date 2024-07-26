@@ -5,7 +5,7 @@
 //  Created by Максим Кузнецов on 06.07.2024.
 //
 
-import UIKit
+import Foundation
 import CocoaLumberjackSwift
 
 public struct Category {

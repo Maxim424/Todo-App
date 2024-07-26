@@ -10,7 +10,7 @@ import FileCache
 
 @main
 struct todo_appApp: App {
-    @StateObject private var todoListViewModel = TodoListViewModel(fileCache: FileCache())
+    @StateObject private var todoListViewModel = TodoListViewModel(fileCache: DefaultFileCache())
     
     var body: some Scene {
         WindowGroup {

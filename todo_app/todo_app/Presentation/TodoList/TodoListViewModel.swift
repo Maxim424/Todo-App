@@ -12,36 +12,32 @@ import CocoaLumberjackSwift
 @MainActor
 final class TodoListViewModel: ObservableObject {
     @Published var isShowingDetails = false
-    @Published var isShowingAllItems = false
+    @Published var isShowingAllItems = true
     @Published var isShowingCalendar = false
     @Published var currentItem: TodoItem? = nil
     @Published var filteredList: [TodoItem] = []
     @Published var fileCacheList: [TodoItem] = []
     
-    private var fileCache: FileCache
+    private var fileCache: DefaultFileCache
     private var completion: (() -> Void)?
     
     private var networkingService = DefaultNetworkingService()
     private var revision: Int = 0
     private var isDirty: Bool = false
     
-    init(fileCache: FileCache, completion: (() -> Void)? = nil) {
+    init(fileCache: DefaultFileCache, completion: (() -> Void)? = nil) {
         self.fileCache = fileCache
         self.completion = completion
     }
     
     func eventOnAppear() {
         Task {
-            await fetchItems()
+            await filteredList = fileCache.fetch()
+            if !isShowingAllItems {
+                filteredList = filteredList.filter { !$0.isDone }
+            }
             await fetchItemsFromServer()
         }
-//        
-//        fileCache.loadFromFile(filename: FileCache.filename)
-//        fetchItems()
-    }
-    
-    func eventOnDisappear() {
-        fileCache.saveToFile(filename: FileCache.filename)
     }
     
     func eventTodoItemPressed(item: TodoItem) {
@@ -50,54 +46,49 @@ final class TodoListViewModel: ObservableObject {
     }
     
     func eventAdd(item: TodoItem) {
+        fileCache.insert(item)
         Task {
-            await fetchItems()
+            await filteredList = fileCache.fetch()
+            if !isShowingAllItems {
+                filteredList = filteredList.filter { !$0.isDone }
+            }
             await addItemToServer(item)
             await fetchItemsFromServer()
         }
-        
-//        fileCache.addTodoItem(item)
-//        fileCache.saveToFile(filename: FileCache.filename)
-//        completion?()
     }
     
     func eventUpdate(item: TodoItem) {
+        fileCache.update(item)
         Task {
-            await fetchItems()
+            await filteredList = fileCache.fetch()
+            if !isShowingAllItems {
+                filteredList = filteredList.filter { !$0.isDone }
+            }
             await updateItemOnServer(item)
             await getItemFromServer(item)
         }
-//        if let index = fileCache.items.firstIndex(where: { $0.id == item.id }) {
-//            fileCache.items[index] = item
-//            fileCache.saveToFile(filename: FileCache.filename)
-//            completion?()
-//        }
     }
     
     func eventDelete(item: TodoItem) {
+        fileCache.delete(item)
         Task {
-            await fetchItems()
+            await filteredList = fileCache.fetch()
+            if !isShowingAllItems {
+                filteredList = filteredList.filter { !$0.isDone }
+            }
             await  deleteItemFromServer(item)
             await fetchItemsFromServer()
         }
-//        if let index = fileCache.items.firstIndex(where: { $0.id == item.id }) {
-//            fileCache.items.remove(at: index)
-//            fileCache.saveToFile(filename: FileCache.filename)
-//        }
     }
     
     func eventShowButtonPressed() {
         isShowingAllItems.toggle()
         Task {
+            await filteredList = fileCache.fetch()
+            if !isShowingAllItems {
+                filteredList = filteredList.filter { !$0.isDone }
+            }
             await fetchItemsFromServer()
-        }
-    }
-    
-    private func fetchItems() async {
-        fileCache.loadFromFile(filename: FileCache.filename)
-        fileCacheList = fileCache.items
-        if isDirty {
-            await patchItemsOnServer(fileCacheList)
         }
     }
     

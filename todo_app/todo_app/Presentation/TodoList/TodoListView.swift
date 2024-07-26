@@ -29,9 +29,6 @@ struct TodoListView: View {
             .onAppear {
                 viewModel.eventOnAppear()
             }
-            .onDisappear {
-                viewModel.eventOnDisappear()
-            }
             .sheet(isPresented: $viewModel.isShowingDetails) {
                 DetailsView()
             }
@@ -92,7 +89,7 @@ struct TodoListView: View {
                 }
             } header: {
                 HStack {
-                    Text("Выполнено – \(0)")
+                    Text("Выполнено – \(viewModel.filteredList.filter { $0.isDone }.count)")
                         .textCase(nil)
                     Spacer()
                     Button {
